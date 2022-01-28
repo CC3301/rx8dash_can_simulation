@@ -1,0 +1,90 @@
+Can Message Identifier,Byte(s),Bit,Bitmask,Description,Comment
+00000040,,,,,Only lasts when key is first on
+00000046,,,,,Only lasts when key is first on
+00000190,2,6,0x40,Brake Active,
+00000200,"0,1",,,Unknown,"Correlates with with 00000200(4,5) & Acceleration"
+00000200,"2,3",,,Unknown,
+00000200,"4,5",,,Unknown,"Correlates with with 00000200(0,1) & Acceleration"
+00000200,6,7,0x80,Unknown,
+00000201,"0,1",,,RPM,Scale = X rpm.
+00000201,"2,3",,,Unknown,Offset by 0x4000. Appears to be the ‘delta’ in engine torque? Derivative of rpm? Cumulative returns to zero.
+00000201,"4,5",,,Vehicle Speed,Scale = X/100 km/h. Unsigned.
+00000201,6,,,Accelerator Pedal,Accelerator Position. 200 is fully depressed.
+00000205,2,6,0x40,Brake Active,
+0000020F,"2,3",,,Vehicle Speed,"Scale = (X-10000)/100 km/h, unsigned (Refer to handle position). Correlates with 0000004B0 wheel speeds."
+0000020F,4,6,0x40,Unknown,Appears always on
+00000211,2,7,0x80,Unknown,Appears always on
+00000211,4,6,0x40,Unknown,Appears always on
+00000212,0,7,0x80,Unknown,Appears always on
+00000212,2,5,0x20,Unknown,Appears always on
+00000212,3,7,0x80,Unknown,Appears always on
+00000212,4,4,0x10,,Some Dash Warning Light… Off when ignition is off
+00000212,4,6,0x40,,Some Dash Warning Light… Off when ignition is off
+00000228,0,0,0x1,Off (Park),0x03 appears to be ‘neutral’
+00000228,0,1,0x2,Reverse,0x03 appears to be ‘neutral’
+00000228,0,2,0x4,Forward (Drive),
+00000228,0,3,,,
+00000228,0,4,0x10,1st Gear,
+00000228,0,5,0x20,2nd Gear,
+00000228,0,6,0x40,3rd Gear,
+00000228,0,7,0x80,4th Gear,
+00000228,1,3,0x8,Gear Shift,Active for several messages on each gear change.
+00000228,1,4,0x10,Unknown,Occurred once on a gear change
+00000228,1,6,0x40,,Something to do with brake pedal
+00000228,1,7,0x80,Manual/Triptronic,
+00000231,0,0,0x1,Unknown,"Not Brake, but very close…changes not far from brake"
+00000231,0,1,0x2,Unknown,Always appears off
+00000231,0,2,0x4,Unknown,Always appears off
+00000231,0,3,0x8,Unknown,Always appears off
+00000231,0,4,0x10,1st Gear,Reverse = 0xE?
+00000231,0,5,0x20,2nd Gear,Reverse = 0xE?
+00000231,0,6,0x40,3rd Gear,Reverse = 0xE?
+00000231,0,7,0x80,4th Gear,Reverse = 0xE?
+00000231,"1,2",,,Unknown,Torque? RPM demand x 10?
+00000240,0,,,Unknown,"Varies, not correlated with speed/accel. Around 10/11/12 when stationary."
+00000250,0,,,Unknown,
+00000250,1,,,Unknown,
+00000250,2,,,Unknown,
+00000250,3,,,Unknown,"Accelerator Position. 225 seems fully depressed, but bias of 32… See other accel pos. This might be the raw value, some noise."
+00000250,4,0,0x1,,
+00000250,5,1,0x2,,
+00000250,5,2,0x4,,
+00000250,5,3,0x8,,
+00000250,5,4,0x10,,
+00000250,5,5,0x20,,
+00000250,5,6,0x40,,
+000002A0,,,,Unknown,Appears to be all zeroes (4 byte frame)
+00000420,"0,1",,,Unknown,
+00000420,1,,,,
+00000420,2,,,Unknown,Counter (Always Increments)
+00000430,,,,Unknown,Not sure if 2 bytes or byte pair.
+00000433,1,0,0x1,,
+00000433,2,0,0x1,Unknown,Not seen to change (0)
+00000433,2,1,0x2,Unknown,Changes
+00000433,2,2,0x4,Unknown,Changes
+00000433,2,3,0x8,Unknown,Not seen to change (1)
+00000433,2,6,0x40,Unknown,Not seen to change (1)
+00000433,3,0,0x1,Unknown,
+00000433,3,1,0x2,Unknown,
+00000433,3,2,0x4,Unknown,
+00000433,3,3,0x8,Unknown,
+00000433,5,0,0x1,Unknown,Not seen to change (1)
+00000433,6,0,0x1,Unknown,
+00000433,6,1,0x2,Unknown,
+00000433,6,2,0x4,Unknown,
+00000433,6,3,0x8,Unknown,
+00000433,6,6,0x40,Unknown,
+000004B0,"0,1",,,Left Front Wheel Speed,"Check Order. Scale = (X-10000)/100 km/h, unsigned (Refer to handle position). Correlates with 00000020F vehicle speeds."
+000004B0,"2,3",,,Right Front Wheel Speed,"Check Order. Scale = (X-10000)/100 km/h, unsigned (Refer to handle position). Correlates with 00000020F vehicle speeds."
+000004B0,"4,5",,,Left Rear Wheel Speed,"Check Order. Scale = (X-10000)/100 km/h, unsigned (Refer to handle position). Correlates with 00000020F vehicle speeds."
+000004B0,"6,7",,,Right Rear Wheel Speed,"Check Order. Scale = (X-10000)/100 km/h, unsigned (Refer to handle position). Correlates with 00000020F vehicle speeds."
+000004DA,"0,1",,,Steering Column Angle,"(X-32768)/10 Degrees, Clockwise +ve."
+000004DA,2,6,0x40,Unknown,Not seen to change (1)
+000004DA,2,7,0x80,Unknown,Not seen to change (1)
+000004EA,,,,Unknown,1 Byte Frame always 00
+000004EC,,,,Unknown,8 Byte Frame always 00
+000004F0,,,,Unchanging Unknown Every 5s,14 24 12 FF FF 7F
+000004F1,,,,Unchanging Unknown Every 5s,4A 01 9F FF FF 64 5E 5E
+000004F2,"1,2",,,Odometer (Total),Might be first byte too to get the range
+000004F3,,,,Unchanging Unknown Every 5s,32 30 33 30 30 38 31 31
+000004F4,,,,Unchanging Unknown Every 5s,42 4B 31 30 46 32 30 30

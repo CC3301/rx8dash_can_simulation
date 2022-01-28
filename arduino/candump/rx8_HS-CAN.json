@@ -1,0 +1,39 @@
+{
+    "messages": [
+        {
+            "id": 513,
+            "is_extended_frame": false,
+            "is_fd": false,
+            "name": "speed",
+            "signals": [
+                {
+                    "bit_length": 16,
+                    "factor": "0.25",
+                    "is_big_endian": true,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "RPM",
+                    "offset": "0",
+                    "start_bit": 25
+                },
+                {
+                    "bit_length": 16,
+                    "factor": "0.01",
+                    "is_big_endian": true,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "SpeedKm",
+                    "offset": "-10000",
+                    "start_bit": 57
+                }
+            ]
+        },
+        {
+            "id": 1072,
+            "is_extended_frame": false,
+            "is_fd": false,
+            "name": "instrument cluster",
+            "signals": []
+        }
+    ]
+}

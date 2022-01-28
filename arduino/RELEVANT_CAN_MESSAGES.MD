@@ -1,0 +1,1 @@
+0x201 10ms interval, byte 1-2 RPM, byte 3-4 (engine torque?), byte 5-6 Vehicle speed, B7 accel pedal, B8 accelerometer?
